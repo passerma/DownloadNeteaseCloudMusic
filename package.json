@@ -1,0 +1,30 @@
+{
+  "name": "node-ts1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "rimraf dist && webpack --config webpack.config.js && node dist/index.js",
+    "build": "rimraf dist release && webpack --config webpack.config.js",
+    "pkg:mac": "pkg dist/index.js -t node18-macos-x64 -o release/DownloadMusic-mac-x64",
+    "pkg:win": "pkg dist/index.js -t node18-win-x64 -o release/DownloadMusic-win-x64.exe",
+    "pkg:linux": "pkg dist/index.js -t node18-linux-x64 -o release/DownloadMusic-linux-x64",
+    "pkg": "npm-run-all -s build pkg:mac pkg:*"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "chalk": "^5.3.0",
+    "inquirer": "^11.0.1",
+    "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/progress": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "pkg": "^5.8.1",
+    "rimraf": "^6.0.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.2",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
