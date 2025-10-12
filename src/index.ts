@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, createWriteStream, renameSync } from 'fs';
 import { join } from "path";
 import inquirer from "inquirer";
 import chalk from 'chalk';
+import sanitize from 'sanitize-filename'
 
 let server = process.env.SERVER
 
@@ -424,7 +425,7 @@ const downSong = async (songs: { id: number, name: string }[], call: () => void)
 
     name = name.replace(/[\/\\]/g, '+');
 
-    const fileNameNoHz = `${name}-${songer}`;
+    const fileNameNoHz = sanitize(`${name}-${songer}`);
     const filePath = join(directory, fileNameNoHz);
 
     downedSongs.push(name)
